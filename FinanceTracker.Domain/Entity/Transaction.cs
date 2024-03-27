@@ -6,6 +6,8 @@
         public required decimal Amount { get; init; }
         public required int CategoryId { get; init; }
         public Category? Category { get; init; }
+        public int UserId { get; init; }
+        public User? User { get; init; }
         public required DateTime CreatedDate { get; init; }
     }
 }

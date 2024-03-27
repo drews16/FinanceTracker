@@ -1,5 +1,6 @@
 ﻿using FinanceTracker.Domain.Entity;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace FinanceTracker.DAL.Database
 {
@@ -11,12 +12,11 @@ namespace FinanceTracker.DAL.Database
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
 
-        public DbSet<Account> Accounts { get; }
-        public DbSet<Transaction> Transactions { get; }
-        public DbSet<User> Users { get; }
-        public DbSet<Category> Categories { get; }
+        public DbSet<Transaction> Transactions { get; private set; }
+        public DbSet<User> Users { get; private set; }
+        public DbSet<Category> Categories { get; private set; }
     }
 }

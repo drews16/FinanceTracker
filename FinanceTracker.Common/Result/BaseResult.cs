@@ -8,7 +8,7 @@
 
     public sealed class BaseResult<T> : BaseResult
     {
-        public override bool IsSuccess => base.IsSuccess;
+        public override bool IsSuccess => Result != null;
         public T? Result { get; init; }
     }
 }

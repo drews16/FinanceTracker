@@ -7,5 +7,6 @@
         public required string LastName { get; init; }
         public required string Login { get; init; }
         public required string Password { get; init; }
+        public IReadOnlyCollection<Transaction>? Transactions { get; init; }
     }
 }

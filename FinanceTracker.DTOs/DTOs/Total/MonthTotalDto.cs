@@ -2,6 +2,7 @@
 {
     public sealed record MonthTotalDto(
         string MonthName,
-        decimal Amount
+        decimal Amount,
+        int MonthNumber
     );
 }

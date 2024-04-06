@@ -53,7 +53,8 @@ namespace FiananceTracker.BLL.Services.Implementations
                 .GroupBy(x => x.CreatedDate.Month)
                 .Select(x => new { 
                     monthName = MonthsData.Months[x.Key], 
-                    amount = x.Sum(y => y.Amount)}
+                    amount = x.Sum(y => y.Amount),
+                    monthNumber = x.Key }
                 )
                 .ToList();
 
@@ -71,9 +72,16 @@ namespace FiananceTracker.BLL.Services.Implementations
                 Result = new TransactionsTotalDto(
                     Total: total,
                     TotalByMonths: totalByMonths
-                        .Select(x => new MonthTotalDto(MonthName: x.monthName, Amount: x.amount)),
+                        .Select(x => new MonthTotalDto(
+                            MonthName: x.monthName,
+                            Amount: x.amount,
+                            MonthNumber: x.monthNumber)
+                        ),
                     TotalByCategories: totalByCategories
-                        .Select(x => new CategoryTotalDto(CategoryName: x.categoryName!, Amount: x.amount)),
+                        .Select(x => new CategoryTotalDto(
+                            CategoryName: x.categoryName!,
+                            Amount: x.amount)
+                        ),
                     MonthName: MonthsData.Months[month]
                 )
             };

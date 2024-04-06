@@ -26,7 +26,7 @@ namespace FiananceTracker.BLL.Services.Implementations
 
             var userClaims = new List<Claim>
             {
-                new Claim("id", user.Id.ToString())
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
             };
 
             var accessToken = tokenService.CreateJwtToken(userClaims);
@@ -75,7 +75,7 @@ namespace FiananceTracker.BLL.Services.Implementations
 
             var userClaims = new List<Claim> 
             {
-                new Claim("id", user.Id.ToString())
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
             };
 
             var accessToken = tokenService.CreateJwtToken(userClaims);

@@ -3,5 +3,6 @@
     public sealed record UserDto(
         int UserId,
         string FirstName,
-        string AccessToken);
+        string AccessToken
+    );
 }

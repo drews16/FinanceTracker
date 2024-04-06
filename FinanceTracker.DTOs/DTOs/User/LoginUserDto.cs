@@ -2,5 +2,6 @@
 {
     public sealed record LoginUserDto(
         string Login,
-        string Password);
+        string Password
+    );
 }

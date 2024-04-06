@@ -15,6 +15,7 @@ namespace FiananceTracker.BLL.DependencyInjection
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<ITransactionService, TransactionService>();
             services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IExcelService, ExcelService>();
             
             return services;
         }

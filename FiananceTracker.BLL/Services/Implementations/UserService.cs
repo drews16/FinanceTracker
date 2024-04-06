@@ -1,4 +1,5 @@
-﻿using FiananceTracker.BLL.Services.Interfaces;
+﻿using FiananceTracker.BLL.Helpers;
+using FiananceTracker.BLL.Services.Interfaces;
 using FinanceTracker.Common.Result;
 using FinanceTracker.DAL.Repository.Interfaces;
 using FinanceTracker.Domain.Entity;
@@ -9,7 +10,8 @@ namespace FiananceTracker.BLL.Services.Implementations
 {
     public sealed class UserService(
         IUserRepository userRepository,
-        ITokenService tokenService) : IUserService
+        ITokenService tokenService,
+        PasswordHasherHelper passwordHasher) : IUserService
     {
         public async Task<BaseResult<UserDto>> LoginAsync(LoginUserDto dto, CancellationToken cancellationToken)
         {
@@ -17,6 +19,14 @@ namespace FiananceTracker.BLL.Services.Implementations
                 .GetByLoginAsync(dto.Login, cancellationToken);
 
             if(user == null)
+            {
+                return new BaseResult<UserDto>
+                {
+                    ErrorMessages = new List<string> { "Пользователь не найден" }
+                };
+            }
+
+            if (!passwordHasher.IsVerifyPassword(dto.Login, dto.Password, user.Password))
             {
                 return new BaseResult<UserDto>
                 {
@@ -68,7 +78,7 @@ namespace FiananceTracker.BLL.Services.Implementations
                 FirstName = dto.FirstName,
                 LastName = dto.LastName,
                 Login = dto.Login,
-                Password = dto.Password
+                Password = passwordHasher.HashPassword(dto.Login, dto.Password),
             };
 
             await userRepository.CreateAsync(user, cancellationToken);

@@ -71,8 +71,6 @@ namespace FiananceTracker.BLL.Services.Implementations
                 };
             }
 
-            // todo: Add validate user properties.
-
             user = new User
             {
                 FirstName = dto.FirstName,

@@ -17,6 +17,7 @@ namespace FinanceTracker.DAL.DependencyInjection
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ITransactionRepository, TransactionRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IExcelRepository, ExcelRepository>();
 
             return services;
         }

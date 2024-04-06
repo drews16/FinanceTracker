@@ -11,7 +11,7 @@ namespace FinanceTracker.DAL.Repository.Implementations
         public async Task<User> CreateAsync(User entity, CancellationToken cancellationToken)
         {
             await context.Users.AddAsync(entity, cancellationToken);
-            await context.SaveChangesAsync();
+            await context.SaveChangesAsync(cancellationToken);
 
             return entity;
         }

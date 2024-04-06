@@ -5,5 +5,6 @@
         string LastName,
         string Login,
         string Password,
-        string ConfirmedPassword);
+        string ConfirmedPassword
+    );
 }

@@ -15,6 +15,7 @@ namespace FinanceTracker.DAL.DependencyInjection
                options.UseSqlServer(configuration.GetConnectionString("SQLServer")));
 
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ITransactionRepository, TransactionRepository>();
 
             return services;
         }

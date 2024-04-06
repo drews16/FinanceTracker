@@ -26,7 +26,7 @@ namespace FinanceTracker.API.Controllers
         [AllowAnonymous]
         [HttpPost("Login")]
         public async Task<ActionResult<UserDto>> Login(
-            LoginUserDto request,
+            [FromBody] LoginUserDto request,
             CancellationToken cancellationToken)
         {
             var response = await userService

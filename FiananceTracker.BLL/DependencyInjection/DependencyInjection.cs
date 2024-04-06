@@ -10,6 +10,7 @@ namespace FiananceTracker.BLL.DependencyInjection
         {
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<ITransactionService, TransactionService>();
 
             return services;
         }
